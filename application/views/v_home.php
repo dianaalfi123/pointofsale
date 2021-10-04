@@ -29,14 +29,15 @@
             <small>paijo@domain.com</small>
         </div>
         <ul>
-            <li><a href="pages/dashboard.html"><i class="fa fa-tachometer-alt text-blue"></i><span>Dashboard</span></a></li>
+            <!-- panggil href controllernya -->
+            <li><a href="dashboard"><i class="fa fa-tachometer-alt text-blue"></i><span>Dashboard</span></a></li>
             <li>
                 <a href="javascript:" class="has-child">
                     <i class="fa fa-dharmachakra text-orange"></i><span>Master</span>
                 </a>
                 <ul>
-                    <li><a href="Produk"><span>Produk</span></a></li>
-                    <li><a href="<?= base_url() ?>pages/alert.html"><span>Pelanggan</span></a></li>
+                    <li><a href="produk"><span>Produk</span></a></li>
+                    <li><a href="pelanggan"><span>Pelanggan</span></a></li>
 
                 </ul>
             </li>
@@ -107,7 +108,7 @@
         if (window.location.pathname.substr(window.location.pathname.length - 1) != "/") location.href = location.href + "/"
 
         const content = document.getElementById("content")
-
+        //panggil controller dashboard saat load url pertama
         if (window.location.hash !== "") loading(window.location.hash.substr(2), window.location.hash)
         else loading(base_url + "dashboard")
 
