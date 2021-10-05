@@ -76,6 +76,24 @@
         </form>
     </div>
 </div>
+<div class="modal fade" id="modal-delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Apakah Anda yakin?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <button type="button" id="delete-button" class="btn btn-primary">Ya</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="<?= base_url() ?>assets/js/components.js"></script>
 <script src="<?= base_url() ?>/assets/plugins/datatables-1.11.1/jquery.dataTables.min.js"></script>
 
@@ -135,6 +153,17 @@
                 }
             })
         })
+
+        $("#delete-button").on("click", function(e) {
+            $.ajax({
+                url: "produk/delete/" + globalid,
+                type: "GET",
+                success: function(data) {
+                    tableProduk.ajax.reload()
+                    $("#modal-delete").modal("hide")
+                }
+            })
+        })
     })
 
     function edit(id) {
@@ -154,5 +183,10 @@
                 modalForm.find("#stok").val(data.stok)
             }
         })
+    }
+
+    function deleteData(id) {
+        globalid = id
+        $("#modal-delete").modal("show")
     }
 </script>

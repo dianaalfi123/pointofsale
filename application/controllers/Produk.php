@@ -59,4 +59,12 @@ class Produk extends CI_Controller
         $this->M_produk->update($id, $data);
         echo json_encode("success");
     }
+
+    function delete($id)
+    {
+        $this->db->where("id_produk", $id);
+        $this->db->delete("produk");
+
+        echo json_encode("success");
+    }
 }
