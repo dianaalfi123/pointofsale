@@ -71,4 +71,21 @@ class M_produk extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
+
+    public function simpan($data)
+    {
+        $this->db->insert($this->table, $data);
+        return $this->db->insert_id();
+    }
+
+    public function edit($id)
+    {
+        return $this->db->get_where($this->table, ["id_produk" => $id])->row();
+    }
+
+    public function update($id, $data)
+    {
+        $this->db->where('id_produk', $id);
+        $this->db->update($this->table, $data);
+    }
 }

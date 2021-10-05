@@ -39,4 +39,24 @@ class Produk extends CI_Controller
         );
         echo json_encode($output);
     }
+
+    function simpan()
+    {
+        $data = $this->input->post();
+        $this->M_produk->simpan($data);
+        echo json_encode("success");
+    }
+
+    function edit($id)
+    {
+        $data = $this->M_produk->edit($id);
+        echo json_encode($data);
+    }
+
+    function update($id)
+    {
+        $data = $this->input->post();
+        $this->M_produk->update($id, $data);
+        echo json_encode("success");
+    }
 }
